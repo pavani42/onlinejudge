@@ -16,6 +16,13 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
     },
+    solvedQuestions: [{
+        type: String
+    }],
+    totalSubmissions: {
+        type: Number,
+        default: 0
+    }
 });
 
 module.exports = mongoose.model("user", userSchema);

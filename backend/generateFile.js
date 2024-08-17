@@ -10,8 +10,12 @@ if(!fs.existsSync(dirCodes)){
 
 const generateFile = (language, code) => {
     const jobId = uuid();
+    const langDir = path.join(dirCodes, language);
+    if(!fs.existsSync(langDir)){
+        fs.mkdirSync(langDir, {recursive : true});
+    }
     const filename = `${jobId}.${language}`;
-    const filePath = path.join(dirCodes, filename);
+    const filePath = path.join(langDir, filename);
     fs.writeFileSync(filePath, code);
     return filePath;
 };
